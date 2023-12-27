@@ -1,4 +1,4 @@
-<div align="center">
+
 <h1>Retrieval-based-Voice-Conversion-WebUI 1006v2 + .codename0 Mangio ONNX patch</h1>
 This is a fork on the original repo to focus on proper ONNX conversion as suggested by .codename0 (core maintainer of main RVC WebUI repo) in this Discord thread: https://discord.com/channels/1096355826131812443/1189275652650696775/1189277446747471962 
 
@@ -20,7 +20,9 @@ python infer-web.py
 #the webui will now be launched and you can infer on audio files, for the ONNX export, go the the 'ONNX' tab and export the .pth file
 ```
 
+For inference of the converted ONNX, look into .codename0's inference repo: https://github.com/codename0og/RVC_Onnx_Infer
 
+<div align="center">
 <h1>Retrieval-based-Voice-Conversion-WebUI</h1>
 一个基于VITS的简单易用的变声框架<br><br>
 
