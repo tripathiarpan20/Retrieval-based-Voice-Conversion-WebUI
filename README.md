@@ -1,4 +1,25 @@
 <div align="center">
+<h1>Retrieval-based-Voice-Conversion-WebUI 1006v2 + .codename0 Mangio ONNX patch</h1>
+This is a fork on the original repo to focus on proper ONNX conversion as suggested by .codename0 (core maintainer of main RVC WebUI repo) in this Discord thread: https://discord.com/channels/1096355826131812443/1189275652650696775/1189277446747471962 
+
+Instructions:
+```
+git clone https://github.com/tripathiarpan20/Retrieval-based-Voice-Conversion-WebUI/
+cd Retrieval-based-Voice-Conversion-WebUI
+virtualenv rvc_env
+source rvc_env/bin/activate
+pip install -r requirements.txt
+pip install onnx onnxruntime
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:rvc_env/lib/
+python tools/download_models.py
+#Download suitable model from weights.gg with pth & index file, like: https://www.weights.gg/models/clot9dv1z007uwspa9byr1a91
+#paste the `.pth` file in assets/weights folder
+#if your .pth is named abcde.pth, create an empty folder abcde in the ROOT/logs folder
+#paste the .index file in the newly created folder
+python infer-web.py
+#the webui will now be launched and you can infer on audio files, for the ONNX export, go the the 'ONNX' tab and export the .pth file
+```
+
 
 <h1>Retrieval-based-Voice-Conversion-WebUI</h1>
 一个基于VITS的简单易用的变声框架<br><br>
