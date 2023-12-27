@@ -21,8 +21,12 @@ import librosa
 import numpy as np
 from scipy.io import wavfile
 
-from infer.lib.audio import load_audio
+from infer.lib.my_utils import load_audio
 from infer.lib.slicer2 import Slicer
+
+DoFormant = False
+Quefrency = 1.0
+Timbre = 1.0
 
 mutex = multiprocessing.Lock()
 f = open("%s/preprocess.log" % exp_dir, "a+")
@@ -37,7 +41,7 @@ def println(strr):
 
 
 class PreProcess:
-    def __init__(self, sr, exp_dir, per=3.7):
+    def __init__(self, sr, exp_dir, per=3.0):
         self.slicer = Slicer(
             sr=sr,
             threshold=-42,
@@ -84,7 +88,7 @@ class PreProcess:
 
     def pipeline(self, path, idx0):
         try:
-            audio = load_audio(path, self.sr)
+            audio = load_audio(path, self.sr, DoFormant, Quefrency, Timbre)
             # zero phased digital filter cause pre-ringing noise...
             # audio = signal.filtfilt(self.bh, self.ah, audio)
             audio = signal.lfilter(self.bh, self.ah, audio)
